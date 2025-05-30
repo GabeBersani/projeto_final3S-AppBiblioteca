@@ -4,7 +4,6 @@ from flet.core.colors import Colors
 from flet.core.types import CrossAxisAlignment
 from flet.utils import which
 
-from api import cadastrar_livros_novos
 from funcao import *
 
 

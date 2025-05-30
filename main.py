@@ -75,7 +75,7 @@ def main(page: ft.Page):
         page.update()
 
     def ver_detalhes(titulo_, autor_, ISBN_, resumo_):
-        txt.value = f"Título: {titulo_}\nAutor: {autor_}\nISBN: {ISBN_}\nResumo: {resumo_}"
+        txt.value = f"titulo: {titulo_}\nautor: {autor_}\nISBN: {ISBN_}\nresumo: {resumo_}"
         page.go("/listar_detalhes")
 
     def exibir_lista_usuario(e):
@@ -85,7 +85,7 @@ def main(page: ft.Page):
             usu_usuarios.controls.append(
                 ft.ListTile(
                     leading=ft.Icon(ft.Icons.PERSON),
-                    title=ft.Text(u["Nome"]),
+                    title=ft.Text(u["nome"]),
                     trailing=ft.PopupMenuButton(
                         items=[ft.PopupMenuItem(text="Detalhes")],
                         on_select=lambda _, usu=u: ver_detalhes_usu(usu["Nome"], usu["CPF"], usu["Endereço"]),
@@ -95,7 +95,7 @@ def main(page: ft.Page):
         page.update()
 
     def ver_detalhes_usu(nome_, CPF_, endereco_):
-        txt_usu.value = f"Nome: {nome_}\nCPF: {CPF_}\nEndereço: {endereco_}"
+        txt_usu.value = f"nome: {nome_}\nCPF: {CPF_}\nendereco: {endereco_}"
         page.go("/listar_detalhes_usu")
 
     def exibir_lista_emprestimo(e):
@@ -119,12 +119,12 @@ def main(page: ft.Page):
             )
         page.update()
 
-    def ver_detalhes_empres(data_emp, data_dev, livro, usuario, id_usu, id_liv):
+    def ver_detalhes_empres(data_emprestimo, data_devolucao, livro_emprestado, usuario_eprestado, id_usuario, id_livro):
         txt_empres.value = (
-            f"Data Empréstimo: {data_emp}\n"
-            f"Data Devolução: {data_dev}\n"
-            f"Livro: {livro}\nUsuário: {usuario}\n"
-            f"ID Usuário: {id_usu}\nID Livro: {id_liv}"
+            f"Data Empréstimo: {data_emprestimo}\n"
+            f"Data Devolução: {data_devolucao}\n"
+            f"Livro: {livro_emprestado}\nUsuário: {usuario_eprestado}\n"
+            f"ID Usuário: {id_usuario}\nID Livro: {id_livro}"
         )
         page.go("/listar_detalhes_emprestimo")
 
@@ -137,9 +137,9 @@ def main(page: ft.Page):
                 "/",
                 [
                         ft.Image(src="logo (2).png"),
-                    ElevatedButton("Usuarios", on_click=lambda _: page.go("/usuario"), width=150, color=ft.CupertinoColors.SYSTEM_PURPLE),
-                    ElevatedButton("Livros", on_click=lambda _: page.go("/livro"), color=ft.CupertinoColors.SYSTEM_PURPLE, width=150),
-                    ElevatedButton("Emprestimos", on_click=lambda _: page.go("/emprestimos"),color=ft.CupertinoColors.SYSTEM_PURPLE, width=150),
+                    ElevatedButton("Usuarios", on_click=lambda _: page.go("/usuario"), width=200, color=ft.CupertinoColors.SYSTEM_PURPLE),
+                    ElevatedButton("Livros", on_click=lambda _: page.go("/livro"), color=ft.CupertinoColors.SYSTEM_PURPLE, width=200),
+                    ElevatedButton("Emprestimos", on_click=lambda _: page.go("/emprestimos"),color=ft.CupertinoColors.SYSTEM_PURPLE, width=200),
                 ],
                 bgcolor=Colors. PURPLE_900,
                 horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -154,11 +154,11 @@ def main(page: ft.Page):
                         ft.Image(src="usu.png"),
                         AppBar(title=Text(""), bgcolor=Colors.YELLOW_700),
                         ElevatedButton(text="Cadastro de usuario", on_click=lambda _: page.go("/cadastro_usu"),
-                                       width=150, color=ft.CupertinoColors.SYSTEM_PURPLE),
+                                       width=200, color=ft.CupertinoColors.SYSTEM_PURPLE),
                         ElevatedButton(text="Visualizar usuario", on_click=lambda _: page.go("/lista_usu"),
-                                       width=150, color=ft.CupertinoColors.SYSTEM_PURPLE),
+                                       width=200, color=ft.CupertinoColors.SYSTEM_PURPLE),
                         ElevatedButton(text="Editar usuario", on_click=lambda _: page.go("/editar_usu"),
-                                       width=150, color=ft.CupertinoColors.SYSTEM_PURPLE)
+                                       width=200, color=ft.CupertinoColors.SYSTEM_PURPLE)
 
                     ],
                     bgcolor=Colors.PURPLE_900,
@@ -175,11 +175,11 @@ def main(page: ft.Page):
                         ft.Image(src="liv.png"),
                         AppBar(title=Text(""), bgcolor=Colors.YELLOW_700),
                         ElevatedButton(text="Cadastro de livro", on_click=lambda _: page.go("/cadastro_liv"),
-                                       width=150, color=ft.CupertinoColors.SYSTEM_PURPLE),
+                                       width=200, color=ft.CupertinoColors.SYSTEM_PURPLE),
                         ElevatedButton(text="Visualizar livros", on_click=lambda _: page.go("/lista_liv"),
-                                       width=150, color=ft.CupertinoColors.SYSTEM_PURPLE),
+                                       width=200, color=ft.CupertinoColors.SYSTEM_PURPLE),
                         ElevatedButton(text="Editar livro", on_click=lambda _: page.go("/editar_liv"),
-                                       width=150, color=ft.CupertinoColors.SYSTEM_PURPLE)
+                                       width=200, color=ft.CupertinoColors.SYSTEM_PURPLE)
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -195,9 +195,9 @@ def main(page: ft.Page):
                         ft.Image(src="empres.png"),
                         AppBar(title=Text(""), bgcolor=Colors.YELLOW_700),
                         ElevatedButton(text="Realizar emprestimo", on_click=lambda _: page.go("/emprestimo"),
-                                       color=ft.CupertinoColors.SYSTEM_PINK, width=375),
+                                       color=ft.CupertinoColors.SYSTEM_PURPLE, width=200),
                         ElevatedButton(text="Visualizar emprestimo", on_click=lambda _: page.go("/lista_emprestimo"),
-                                       color=ft.CupertinoColors.SYSTEM_PINK, width=375),
+                                       color=ft.CupertinoColors.SYSTEM_PURPLE, width=200),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,

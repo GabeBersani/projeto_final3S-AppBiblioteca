@@ -219,6 +219,7 @@ def main(page: ft.Page):
                             items=[
                                 PopupMenuItem(text="Detalhes", on_click=lambda _, usu=u: ver_detalhes_usu(usu)),
                                 PopupMenuItem(text="Editar", on_click=lambda _, usu=u: iniciar_edicao_usuario(usu)),
+
                             ]
                         )
                     )
@@ -373,7 +374,7 @@ def main(page: ft.Page):
                         autor,
                         ISBN,
                         resumo,
-                        ElevatedButton("Salvar", on_click=salvar_livro),
+                        ElevatedButton("Salvar", on_click=salvar_livro,width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -404,8 +405,8 @@ def main(page: ft.Page):
                         edit_autor,
                         edit_ISBN,
                         edit_resumo,
-                        ElevatedButton("Salvar Alterações", on_click=salvar_editar_livro),
-                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_liv")),
+                        ElevatedButton("Salvar Alterações", on_click=salvar_editar_livro, width=375, color=ft.CupertinoColors.SYSTEM_PURPLE ),
+                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_liv"), width=375, color=ft.CupertinoColors.SYSTEM_PURPLE ),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -421,7 +422,7 @@ def main(page: ft.Page):
                         nome,
                         CPF,
                         endereco,
-                        ElevatedButton("Salvar", on_click=salvar_usuario),
+                        ElevatedButton("Salvar", on_click=salvar_usuario, width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -451,8 +452,8 @@ def main(page: ft.Page):
                         edit_nome,
                         edit_CPF,
                         edit_endereco,
-                        ElevatedButton("Salvar Alterações", on_click=salvar_editar_usuario),
-                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_usu")),
+                        ElevatedButton("Salvar Alterações", on_click=salvar_editar_usuario, width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
+                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_usu"), width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -472,7 +473,7 @@ def main(page: ft.Page):
                         dd_usuario,  # Dropdown para seleção de usuário
                         data_emprestimo,
                         data_devolucao,
-                        ElevatedButton("Realizar Empréstimo", on_click=salvar_emprestimo),
+                        ElevatedButton("Realizar Empréstimo", on_click=salvar_emprestimo, width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -500,7 +501,7 @@ def main(page: ft.Page):
                     [
                         AppBar(title=Text("Detalhes do Livro"), bgcolor=Colors.YELLOW_700),
                         txt,
-                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_liv")),
+                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_liv"), width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -514,7 +515,7 @@ def main(page: ft.Page):
                     [
                         AppBar(title=Text("Detalhes do Usuário"), bgcolor=Colors.YELLOW_700),
                         txt_usu,
-                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_usu")),
+                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_usu"), width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -528,7 +529,7 @@ def main(page: ft.Page):
                     [
                         AppBar(title=Text("Detalhes do Empréstimo"), bgcolor=Colors.YELLOW_700),
                         txt_empres,
-                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_empres")),
+                        ElevatedButton("Voltar", on_click=lambda e: page.go("/lista_empres"), width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -542,7 +543,7 @@ def main(page: ft.Page):
                     [
                         AppBar(title=Text("Status dos Livros"), bgcolor=Colors.YELLOW_700),
                         Text(value=txt_status.value, selectable=True),
-                        ElevatedButton("Voltar", on_click=lambda e: page.go("/livro")),
+                        ElevatedButton("Voltar", on_click=lambda e: page.go("/livro"), width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
                     horizontal_alignment=CrossAxisAlignment.CENTER,

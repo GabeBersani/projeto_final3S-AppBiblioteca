@@ -104,6 +104,7 @@ def main(page: ft.Page):
             msg_erro.open = True
         page.update()
 
+
     def salvar_editar_livro(e):
         nonlocal editar_livro_id
         if editar_livro_id is None:
@@ -159,7 +160,6 @@ def main(page: ft.Page):
             msg_erro.open = True
         page.update()
 
-    # Funções exibir listas e detalhes
     def exibir_lista_livros(e):
         lv_livro.controls.clear()  # Limpa a lista antes de adicionar
         livros = get_livros()

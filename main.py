@@ -1,9 +1,10 @@
 import flet as ft
 from flet import (
     AppBar, Text, View, ElevatedButton, TextField, ListView,
-    ListTile, Icon, PopupMenuButton, PopupMenuItem, Image, Dropdown, dropdown
+    ListTile, Icon, PopupMenuButton, PopupMenuItem, Image, Dropdown
 )
 from flet.core.colors import Colors
+from flet.core.dropdown import Option
 from flet.core.types import CrossAxisAlignment
 
 from funcao import (
@@ -25,27 +26,24 @@ def main(page: ft.Page):
     def carregar_livros_dropdown():
         livros_data = get_livros()
         dado = []
-        if livros_data and 'livros' in livros_data:
-            for livro in livros_data['livros']:
-                dado.append(dropdown.Option(
-                    key=str(livro['id_livro']),
-                    text=f"{livro['titulo']} (ID: {livro['id_livro']})"
-                ))
-        dd_livro.dado = dado
-        dd_livro.value = None  # Reseta a seleção atual
+
+        for livro in livros_data['livros']:
+            dado.append(Option(
+                key=str(livro['id_livro']),
+                text=f"{livro['titulo']} (ID: {livro['id_livro']})"
+            ))
+        dd_livro.options = dado
         page.update()
 
     def carregar_usuarios_dropdown():
         usuarios_data = get_usuarios()
         dado = []
-        if usuarios_data and 'usuarios' in usuarios_data:
-            for usuario in usuarios_data['usuarios']:
-                dado.append(dropdown.Option(
-                    key=str(usuario['id_usuario']),
-                    text=f"{usuario['nome']} (ID: {usuario['id_usuario']})"
-                ))
-        dd_usuario.dado = dado
-        dd_usuario.value = None  # Reseta a seleção atual
+        for usuario in usuarios_data['usuarios']:
+            dado.append(Option(
+                key=str(usuario['id_usuario']),
+                text=f"{usuario['nome']} (ID: {usuario['id_usuario']})"
+            ))
+        dd_usuario.options = dado
         page.update()
 
 

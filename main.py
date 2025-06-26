@@ -82,14 +82,10 @@ def main(page: ft.Page):
         selected_livro_id = dd_livro.value
         selected_usuario_id = dd_usuario.value
 
-        if (data_emprestimo.value.strip() and data_devolucao.value.strip() and
-                selected_livro_id and selected_usuario_id):  # ver se os Dropdowns têm valor
+        if selected_livro_id and selected_usuario_id:  # ver se os Dropdowns têm valor
             sucesso = post_emprestimos(
                 selected_livro_id,
-                selected_usuario_id,
-                data_emprestimo.value.strip(),
-                data_devolucao.value.strip()
-            )
+                selected_usuario_id)
             if sucesso:
                 data_emprestimo.value = data_devolucao.value = ""
                 dd_livro.value = None  # Limpa a seleção do dropdown após o sucesso
@@ -469,8 +465,7 @@ def main(page: ft.Page):
                         AppBar(title=Text("Cadastro de Empréstimo"), bgcolor=Colors.YELLOW_700),
                         dd_livro,  # Dropdown para seleção de livro
                         dd_usuario,  # Dropdown para seleção de usuário
-                        data_emprestimo,
-                        data_devolucao,
+
                         ElevatedButton("Realizar Empréstimo", on_click=salvar_emprestimo, width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
                     bgcolor=Colors.PURPLE_900,
@@ -622,4 +617,3 @@ def main(page: ft.Page):
 
 if __name__ == "__main__":
     ft.app(target=main)
-

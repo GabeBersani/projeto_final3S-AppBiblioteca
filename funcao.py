@@ -1,6 +1,6 @@
 import requests
 
-URL_BASE = "http://10.135.232.8:5001"  # Altere conforme seu backend
+URL_BASE = "http://10.135.232.10:5001"
 
 # LIVROS
 def post_livro(titulo, autor, isbn, resumo):
@@ -98,12 +98,20 @@ def editar_usuario(id_usuario, nome=None, cpf=None, endereco=None): # Renomeada 
         return False
 
 # EMPRÉSTIMOS
-def post_emprestimos(id_livro, id_usuario, data_emprestimo, data_devolucao):
+def devolver_livro(id_livro):
+    dados = {
+        "id_livro": id_livro
+    }
+    try:
+        resposta = requests.post(f"{URL_BASE}/devolver_livro", json=dados)
+        return resposta.status_code == 201
+    except Exception as e:
+        print(f"Erro ao cadastrar empréstimo: {e}")
+        return False
+def post_emprestimos(id_livro, id_usuario):
     dados = {
         "id_livro": int(id_livro),
-        "id_usuario": int(id_usuario),
-        "data_emprestimo": data_emprestimo,
-        "data_devolucao": data_devolucao
+        "id_usuario": int(id_usuario)
     }
     try:
         resposta = requests.post(f"{URL_BASE}/realizar_emprestimo", json=dados)

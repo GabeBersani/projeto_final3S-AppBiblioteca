@@ -88,8 +88,8 @@ def main(page: ft.Page):
                 selected_usuario_id)
             if sucesso:
                 data_emprestimo.value = data_devolucao.value = ""
-                dd_livro.value = None  # Limpa a seleção do dropdown após o sucesso
-                dd_usuario.value = None  # Limpa a seleção do dropdown após o sucesso
+                dd_livro.value = None  # limoa a seleção do drop
+                dd_usuario.value = None  # limpa a seleção do drop
                 msg_sucesso.open = True
                 page.go("/lista_empres")
             else:
@@ -157,7 +157,7 @@ def main(page: ft.Page):
         page.update()
 
     def exibir_lista_livros(e):
-        lv_livro.controls.clear()  # Limpa a lista antes de adicionar
+        lv_livro.controls.clear()
         livros = get_livros()
         if not livros or 'livros' not in livros or not livros['livros']:
             lv_livro.controls.append(Text("livro nao encontrado"))
@@ -198,7 +198,7 @@ def main(page: ft.Page):
         page.update()
 
     def exibir_lista_usuario(e):
-        usu_usuarios.controls.clear()  # Limpa a lista antes de adicionar
+        usu_usuarios.controls.clear()
         usuarios = get_usuarios()
         if not usuarios or 'usuarios' not in usuarios or not usuarios['usuarios']:
             usu_usuarios.controls.append(Text("Nenhum usuário encontrado."))
@@ -435,7 +435,7 @@ def main(page: ft.Page):
                     horizontal_alignment=CrossAxisAlignment.CENTER,
                 )
             )
-            exibir_lista_usuario(e)  # Carrega a lista ao entrar na rota
+            exibir_lista_usuario(e)  # carrega a lista ao entrar na rota
 
         if rota == "/editar_usuario":
             page.views.append(
@@ -455,7 +455,6 @@ def main(page: ft.Page):
             )
 
         if rota == "/cadastro_empres":
-            # Ao entrar nesta rota, carregamos os dados para os Dropdowns
             carregar_livros_dropdown()
             carregar_usuarios_dropdown()
             page.views.append(
@@ -463,8 +462,8 @@ def main(page: ft.Page):
                     "/cadastro_empres",
                     [
                         AppBar(title=Text("Cadastro de Empréstimo"), bgcolor=Colors.YELLOW_700),
-                        dd_livro,  # Dropdown para seleção de livro
-                        dd_usuario,  # Dropdown para seleção de usuário
+                        dd_livro,  # Dropdown liv
+                        dd_usuario,  # Dropdown usu
 
                         ElevatedButton("Realizar Empréstimo", on_click=salvar_emprestimo, width=375, color=ft.CupertinoColors.SYSTEM_PURPLE),
                     ],
@@ -606,7 +605,7 @@ def main(page: ft.Page):
     page.overlay.append(msg_sucesso)
     page.overlay.append(msg_erro)
 
-    # Variáveis para edição
+    # variavel para edi
     editar_livro_id = None
     editar_usu_id = None
 

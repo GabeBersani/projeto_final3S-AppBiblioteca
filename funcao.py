@@ -1,8 +1,8 @@
 import requests
 
-URL_BASE = "http://10.135.232.10:5001"
+URL_BASE = "http://10.135.235.32:5001"
 
-# LIVROS
+
 def post_livro(titulo, autor, isbn, resumo):
     dados = {
         "titulo": titulo,

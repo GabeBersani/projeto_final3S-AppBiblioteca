@@ -108,6 +108,7 @@ def devolver_livro(id_livro):
     except Exception as e:
         print(f"Erro ao cadastrar empréstimo: {e}")
         return False
+
 def post_emprestimos(id_livro, id_usuario):
     dados = {
         "id_livro": int(id_livro),

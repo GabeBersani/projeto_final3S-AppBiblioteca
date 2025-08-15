@@ -239,17 +239,17 @@ def main(page: ft.Page):
 
     def exibir_lista_emprestimo(e):
         emp_emprestimos.controls.clear()  # limpaa a lista antes de adicionar
-        emprestimos = get_emprestimos()
-        if not emprestimos or 'emprestimos' not in emprestimos or not emprestimos['emprestimos']:
+        dados = get_emprestimos()
+        if not dados['id_emprestimo'] or not dados['data_emprestimo'] or not dados['data_devolucao'] or not dados['nome_usuario']or not dados['cpf'] or not dados['nome_livro']:
             emp_emprestimos.controls.append(Text("Nenhum empréstimo encontrado."))
         else:
-            for emp in emprestimos['emprestimos']:
+            for dicio in dados['lista_emprestimos']:
                 emp_emprestimos.controls.append(
                     ListTile(
                         leading=Icon(ft.Icons.BOOK),
-                        title=Text(f"Empréstimo ID: {emp.get('id_emprestimo', '')}"),
+                        title=Text(f"Nome de Usuário: {dicio['nome']}"),
                         subtitle=Text(
-                            f"Data: {emp.get('data_de_emprestimo', '')} - Devolução: {emp.get('data_de_devolucao', '')}\nUsuário ID: {emp.get('id_usuario', '')} - Livro ID: {emp.get('id_livro', '')}"),
+                            f"Data: {dicio['data_emprestimo']} - {dicio['data_devolucao']}\nNome do Usuário: {dicio['nome']} - Titulo do Livro: {dicio['titulo']}"),
                     )
                 )
         page.update()
